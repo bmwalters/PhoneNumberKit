@@ -103,7 +103,7 @@ final class PhoneNumberParser {
             }
             let stringRange = NSRange(location: startPosition, length: i)
             let subNumber = nsFullNumber.substring(with: stringRange)
-            if let potentialCountryCode = UInt64(subNumber), metadata.territoriesByCode[potentialCountryCode] != nil {
+            if let potentialCountryCode = UInt64(subNumber), metadata.filterTerritories(byCode: potentialCountryCode) != nil {
                 nationalNumber = nsFullNumber.substring(from: i)
                 return potentialCountryCode
             }
